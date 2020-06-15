@@ -77,6 +77,27 @@ const menu = [
 // onload populate menu
 const sectionCenter = document.querySelector('.section-center');
 
+// filters
+const fillterBtns = document.querySelectorAll('.filter-btn');
+
+fillterBtns.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    const category = e.currentTarget.dataset.id;
+    const menuCategory = menu.filter((menuItem) => {
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    (category === 'all') ? displayMenuItem(menu) : displayMenuItem(menuCategory);
+    // if (category === 'all') {
+    //   displayMenuItem(menu);
+    // } else {
+    //   displayMenuItem(menuCategory);
+    // }
+  });  
+});
+
+// display
 window.addEventListener('DOMContentLoaded', () => {
   displayMenuItem(menu);
 });
